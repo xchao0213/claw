@@ -70,9 +70,16 @@ const claw = createClaw(pos);
 //     alert('还没做呢～一起来完善吧')
 //   },
 // });
+
+const control = createControl({
+  callback: (dir) => {
+    console.log('on callback', dir)
+  }
+})
+
 game.scene.addChild(createBackground());
 game.scene.addChild(createMachine());
-game.scene.addChild(createControl());
+game.scene.addChild(control);
 game.scene.addChild(claw);
 // game.scene.addChild(btn);
 

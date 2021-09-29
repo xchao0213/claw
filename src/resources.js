@@ -99,4 +99,26 @@ export default [
     },
     preload: true,
   },
+  {
+    name: 'verticalPole',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/vertical-pole.png',
+      },
+    },
+    preload: true,
+  },
+  {
+    name: 'horizontalPole',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/horizontal-pole.png',
+      },
+    },
+    preload: true,
+  },
 ]

@@ -1,9 +1,11 @@
 import { GameObject } from '@eva/eva.js';
 import { Img } from '@eva/plugin-renderer-img';
 import { Graphics } from '@eva/plugin-renderer-graphics'
+import { Event } from '@eva/plugin-renderer-event';
+import { Transition } from '@eva/plugin-transition';
 
 import util from '../utils/util';
-export default function createControl() {
+export default function createControl({ callback = ()=>{} }) {
   const bottom = util.aspectRatio > 2 ? -100 : 0;
   const control = new GameObject('control', {
     size: { width: util.getWidth(750), height: util.getHeight(411) },
@@ -118,6 +120,78 @@ export default function createControl() {
   control.addChild(down);
   control.addChild(left);
   control.addChild(start);
+
+  const startAnim = start.addComponent(new Transition());
+  startAnim.group = {
+    scale: [
+      {
+        name: 'scale.x',
+        component: start.transform,
+        values: [
+          {
+            time: 0,
+            value: 1,
+            tween: 'ease-out',
+          },
+          {
+            time: 300,
+            value: 0.8,
+            tween: 'ease-in',
+          },
+          {
+            time: 600,
+            value: 1
+          }
+        ]
+      },
+      {
+        name: 'scale.y',
+        component: start.transform,
+        values: [
+          {
+            time: 0,
+            value: 1,
+            tween: 'ease-out',
+          },
+          {
+            time: 300,
+            value: 0.8,
+            tween: 'ease-in',
+          },
+          {
+            time: 600,
+            value: 1
+          }
+        ]
+      }
+    ]
+  }
+
+  const evtUp = up.addComponent(new Event)
+  evtUp.on('tap', () => {
+    callback('up');
+  })
+
+  const evtRight = right.addComponent(new Event)
+  evtRight.on('tap', () => {
+    callback('right');
+  })
+
+  const evtDown = down.addComponent(new Event)
+  evtDown.on('tap', () => {
+    callback('down');
+  })
+
+  const evtLeft = left.addComponent(new Event)
+  evtLeft.on('tap', () => {
+    callback('left')
+  })
+
+  const evtStart = start.addComponent(new Event)
+  evtStart.on('tap', () => {
+    startAnim.play('scale', 1);
+    callback('start')
+  })
 
   if (util.aspectRatio > 2) {
     const blank = new GameObject('blank', {
