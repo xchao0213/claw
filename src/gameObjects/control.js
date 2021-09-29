@@ -6,7 +6,7 @@ import { Transition } from '@eva/plugin-transition';
 
 import util from '../utils/util';
 export default function createControl({ callback = ()=>{} }) {
-  const bottom = util.aspectRatio > 2 ? -100 : 0;
+  const bottom = util.isIphoneX ? -50 : 0;
   const control = new GameObject('control', {
     size: { width: util.getWidth(750), height: util.getHeight(411) },
     origin: { x: 0.5, y: 1 },
@@ -193,13 +193,13 @@ export default function createControl({ callback = ()=>{} }) {
     callback('start')
   })
 
-  if (util.aspectRatio > 2) {
+  if (util.isIphoneX) {
     const blank = new GameObject('blank', {
-      size: { width: util.getWidth(750), height: 100 },
+      size: { width: util.getWidth(750), height: 50 },
       origin: { x: 0.5, y: 1 },
       position: {
         x: 0,
-        y: 100,
+        y: 50,
       },
       anchor: {
         x: 0.5,

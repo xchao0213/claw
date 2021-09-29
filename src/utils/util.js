@@ -15,6 +15,12 @@ let util = {
         console.log('screenHeight', this.screenHeight);
         console.log('aspectRatio', this.aspectRatio);
     },
+    isIphoneX () {
+        if (typeof window !== undefined && window) {
+            return /iphone/gi.test(window.navigator.userAgent) && window.screen.height >= 812;
+        }
+        return false;
+    },
     getScreesWidth() {
         return this.screenWidth * 2;
     },
