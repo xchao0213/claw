@@ -5,6 +5,8 @@ let util = {
     screenHeight: 812, // 实际屏幕高度
     init() {
         console.log(window.screen)
+        console.log('window.innerWidth', window.innerWidth);
+        console.log('window.innerHeight', window.innerHeight)
         this.screenWidth = window.screen.availWidth;
         this.screenHeight = window.screen.availHeight;
         this.aspectRatio = this.screenHeight / this.screenWidth;
