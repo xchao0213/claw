@@ -4,10 +4,11 @@ let util = {
     screenWidth: 375, // 实际屏幕宽度
     screenHeight: 812, // 实际屏幕高度
     init() {
-        this.screenWidth = window.screen.width;
-        this.screenHeight = window.screen.height;
+        this.screenWidth = window.screen.availWidth;
+        this.screenHeight = window.screen.availHeight;
+        this.aspectRatio = window.screen.aspectRatio;
         this.widthRatio = this.screenWidth / 375;
-        this.aspectRatio = this.screenHeight / this.screenWidth;
+        // this.aspectRatio = this.screenHeight / this.screenWidth;
     },
     getScreesWidth() {
         return this.screenWidth * 2;
