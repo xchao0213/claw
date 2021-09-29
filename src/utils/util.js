@@ -7,8 +7,8 @@ let util = {
         console.log(window.screen)
         console.log('window.innerWidth', window.innerWidth);
         console.log('window.innerHeight', window.innerHeight)
-        this.screenWidth = window.screen.availWidth;
-        this.screenHeight = window.screen.availHeight;
+        this.screenWidth = window.innerWidth;
+        this.screenHeight = window.innerHeight;
         this.aspectRatio = this.screenHeight / this.screenWidth;
         this.widthRatio = this.screenWidth / 375;
         console.log('screenWidth', this.screenWidth);
