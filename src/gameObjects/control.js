@@ -74,10 +74,10 @@ export default function createControl({ callback = ()=>{} }) {
 
   const start = new GameObject('start', {
     size: { width: util.getWidth(220), height: util.getHeight(177) },
-    origin: { x: 1, y: 0 },
+    origin: { x: 0.5, y: 0.5 },
     position: {
-      x: -80,
-      y: 170,
+      x: -180,
+      y: 240,
     },
     anchor: {
       x: 1,
