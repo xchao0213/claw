@@ -31,7 +31,6 @@ const game = new Game({
       width: util.getScreesWidth(),
       height: util.getScreesHeight(),
       antialias: true,
-      backgroundColor: '#ddd'
     }),
     new ImgSystem(),
     new TransitionSystem(),
