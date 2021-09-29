@@ -16,6 +16,10 @@ import { TextSystem } from '@eva/plugin-renderer-text';
 
 import util from './utils/util';
 
+import VConsole from 'vconsole';
+
+const vConsole = new VConsole();
+
 resource.addResource(resources);
 
 util.init();
