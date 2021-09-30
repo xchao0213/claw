@@ -78,6 +78,17 @@ export default [
     preload: true,
   },
   {
+    name: 'frontPanel',
+    type: RESOURCE_TYPE.IMAGE,
+    src: {
+      image: {
+        type: 'png',
+        url: './statics/front-panel.png',
+      },
+    },
+    preload: true,
+  },
+  {
     name: 'control',
     type: RESOURCE_TYPE.IMAGE,
     src: {

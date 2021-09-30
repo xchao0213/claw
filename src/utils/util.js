@@ -1,19 +1,13 @@
 let util = {
     aspectRatio: 1, // 宽高比
-    widthRatio: 1, // 宽比率
+    widthRatio: 1, // 宽度比
     screenWidth: 375, // 实际屏幕宽度
     screenHeight: 812, // 实际屏幕高度
     init() {
-        console.log(window.screen)
-        console.log('window.innerWidth', window.innerWidth);
-        console.log('window.innerHeight', window.innerHeight)
         this.screenWidth = window.innerWidth;
         this.screenHeight = window.innerHeight;
         this.aspectRatio = this.screenHeight / this.screenWidth;
         this.widthRatio = this.screenWidth / 375;
-        console.log('screenWidth', this.screenWidth);
-        console.log('screenHeight', this.screenHeight);
-        console.log('aspectRatio', this.aspectRatio);
     },
     isIphoneX () {
         if (typeof window !== undefined && window) {
@@ -28,10 +22,13 @@ let util = {
         return this.screenHeight * 2;
     },
     getWidth(width) {
-        return this.widthRatio > 2 ? width * this.widthRatio * 0.75 : this.widthRatio * width;
+        return this.getLength(width);
     },
     getHeight(height) {
-        return this.widthRatio > 2 ? height * this.widthRatio * 0.75 : this.widthRatio * height;
+        return this.getLength(height);
+    },
+    getLength(length) {
+        return this.widthRatio > 2 ? length * this.widthRatio * 0.75 : this.widthRatio * length;
     }
 };
 

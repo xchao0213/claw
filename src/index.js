@@ -1,6 +1,5 @@
 import createMachine from './gameObjects/machine';
 import createBackground from './gameObjects/background';
-import createClaw from './gameObjects/claw';
 import createControl from './gameObjects/control';
 import resources from './resources';
 
@@ -46,44 +45,44 @@ const game = new Game({
 game.scene.transform.size.width = util.getScreesWidth();
 game.scene.transform.size.height = util.getScreesHeight();
 
-const pos = {
-  x: 350,
-  y: 1000,
-};
-
-const claw = createClaw(pos);
-// const { basetFront, playAnim } = createBasketFront();
-// const btn = createBtn({
-//   text: '投球',
-//   transform: {
-//     position: {
-//       x: 0,
-//       y: -120,
-//     },
-//     origin: {
-//       x: 0.5,
-//       y: 0.5,
-//     },
-//     anchor: {
-//       x: 0.5,
-//       y: 1,
-//     },
-//   },
-//   callback: () => {
-//     alert('还没做呢～一起来完善吧')
-//   },
-// });
+const { machine, verticalPole, horizontalPole, claw, verticalAnim, clawAnim } = createMachine();
 
 const control = createControl({
   callback: (dir) => {
     console.log('on callback', dir)
+    // console.log(verticalPole)
+    switch(dir) {
+      case 'start':
+        verticalAnim.play('longer', 1);
+        clawAnim.play('longer', 1);
+        // verticalPole.transform.size.height += 130;
+        // claw.transform.position.y += 130;
+        break;
+      case 'up':
+        horizontalPole.transform.position.y -= 1;
+        verticalPole.transform.position.y -= 1;
+        claw.transform.position.y -= 1;
+        break;
+      case 'right':
+        verticalPole.transform.position.x += 10;
+        claw.transform.position.x += 10;
+        break;
+      case 'down':
+        horizontalPole.transform.position.y += 1;
+        verticalPole.transform.position.y += 1;
+        claw.transform.position.y += 1;
+        break;
+      case 'left':
+        verticalPole.transform.position.x -= 10;
+        claw.transform.position.x -= 10;
+        break;
+    }
   }
 })
 
 game.scene.addChild(createBackground());
-game.scene.addChild(createMachine());
+game.scene.addChild(machine);
 game.scene.addChild(control);
-game.scene.addChild(claw);
 // game.scene.addChild(btn);
 
 // window.playAnim = playAnim;

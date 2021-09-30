@@ -6,7 +6,7 @@ import { Transition } from '@eva/plugin-transition';
 
 import util from '../utils/util';
 export default function createControl({ callback = ()=>{} }) {
-  const bottom = util.isIphoneX ? -50 : 0;
+  const bottom = util.isIphoneX() ? -50 : 0;
   const control = new GameObject('control', {
     size: { width: util.getWidth(750), height: util.getHeight(411) },
     origin: { x: 0.5, y: 1 },
@@ -22,53 +22,53 @@ export default function createControl({ callback = ()=>{} }) {
 
   const up = new GameObject('up', {
     size: { width: util.getWidth(132), height: util.getHeight(120) },
-    origin: { x: 0, y: 0 },
+    origin: { x: 0.5, y: 0.5 },
     position: {
-      x: 160,
-      y: 140,
+      x: 0,
+      y: -70,
     },
     anchor: {
-      x: 0,
-      y: 0,
+      x: 0.3,
+      y: 0.6,
     },
   });
 
   const right = new GameObject('right', {
     size: { width: util.getWidth(130), height: util.getHeight(119) },
-    origin: { x: 0, y: 0 },
+    origin: { x: 0.5, y: 0.5 },
     position: {
-      x: 280,
-      y: 210,
+      x: 105,
+      y: 0,
     },
     anchor: {
-      x: 0,
-      y: 0,
+      x: 0.3,
+      y: 0.6,
     },
   });
 
   const down = new GameObject('down', {
     size: { width: util.getWidth(132), height: util.getHeight(120) },
-    origin: { x: 0, y: 0 },
+    origin: { x: 0.5, y: 0.5 },
     position: {
-      x: 150,
-      y: 290,
+      x: 0,
+      y: 70,
     },
     anchor: {
-      x: 0,
-      y: 0,
+      x: 0.3,
+      y: 0.6,
     },
   });
 
   const left = new GameObject('left', {
     size: { width: util.getWidth(130), height: util.getHeight(117) },
-    origin: { x: 0, y: 0 },
+    origin: { x: 0.5, y: 0.5 },
     position: {
-      x: 40,
-      y: 210,
+      x: -105,
+      y: 0,
     },
     anchor: {
-      x: 0,
-      y: 0,
+      x: 0.3,
+      y: 0.6,
     },
   });
 
@@ -76,12 +76,12 @@ export default function createControl({ callback = ()=>{} }) {
     size: { width: util.getWidth(220), height: util.getHeight(177) },
     origin: { x: 0.5, y: 0.5 },
     position: {
-      x: -180,
-      y: 240,
+      x: 0,
+      y: 0,
     },
     anchor: {
-      x: 1,
-      y: 0,
+      x: 0.75,
+      y: 0.6,
     },
   });
 
@@ -193,7 +193,7 @@ export default function createControl({ callback = ()=>{} }) {
     callback('start')
   })
 
-  if (util.isIphoneX) {
+  if (util.isIphoneX()) {
     const blank = new GameObject('blank', {
       size: { width: util.getWidth(750), height: 50 },
       origin: { x: 0.5, y: 1 },
